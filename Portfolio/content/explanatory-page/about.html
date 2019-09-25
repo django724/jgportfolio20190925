@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
+</head>
+<body>
+<!-- explanatory text -->
+<div id="explanatory-text">
+  <div>
+  【PC画面】<br>
+  ファーストビューに設置しているページ下部に遷移させる為のscrollボタン、<br>
+  ヘッダープルダウンメニュー、<br>
+  スライドショーはJavaScriptを使用しています。<br>
+  <br>
+  【スマホ画面】<br>
+  画面上部固定のハンバーガーメニュー、<br>
+  ファーストビューのフェードスライド、<br>
+  その下のスライドショー、<br>
+  フッターのアコーディオンメニュー、<br>
+  画面右下固定の上部に移動するスクロールボタンは<br>
+  JavaScriptを使用しています。<br>
+  <br>
+  【その他】<br>
+  メディアクエリでレスポンシブデザインにしています。<br>
+  <br>
+  リンクボックスにホバーエフェクトのcssアニメーションを記述しています。<br>
+  <br>
+  このページの背景もJavaScriptを使用しています。<br>
+  マウスの動き(スマホタップ)に合わせて背景が動きます。<br>
+  <br>
+  Webデザイン面では色々と改良点があると思いますが、<br>
+  HTML、CSS、JavaScript(jQuery含む)のコーディングスキルは一通り身に付けています。<br>
+  <br>
+  制作期間：9/22〜9/23<br>
+  <a href="../../index.html" id="link-box">TOPに戻る</a>
+  </div>
+</div>
+
+<!-- count particles -->
+<div class="count-particles">
+  <span class="js-count-particles">--</span> particles
+</div>
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="../particles.js"></script>
+<script src="js/app.js"></script>
+
+<!-- stats.js -->
+<script src="js/lib/stats.js"></script>
+<script>
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.js-count-particles');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script>
+
+</body>
+</html>
